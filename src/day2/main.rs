@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("input/day2_1.txt").unwrap();
+    let input = fs::read_to_string("input/day2.txt").unwrap();
 
     let reports = parse_input(input);
     let (safe, safe_with_dampening) = calculate_metrics(&reports);

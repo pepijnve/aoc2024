@@ -1,7 +1,7 @@
 use std::fs;
 use regex::Regex;
 fn main() {
-    let input = fs::read_to_string("input/day3_1.txt").unwrap();
+    let input = fs::read_to_string("input/day3.txt").unwrap();
     println!("result 1: {}", calculate_metrics(&input, true));
     println!("result 2: {}", calculate_metrics(&input, false));
 }

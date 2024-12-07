@@ -79,7 +79,7 @@ fn calculate_answer2(input: &str) -> i32 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day5_1.txt").unwrap();
+    let input = fs::read_to_string("input/day5.txt").unwrap();
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }

@@ -23,6 +23,6 @@ mod tests {
 ";
 
         assert_eq!(calculate_answer1(sample), 0);
-        assert_eq!(calculate_answer1(sample), 0);
+        assert_eq!(calculate_answer2(sample), 0);
     }
 }

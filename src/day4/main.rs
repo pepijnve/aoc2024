@@ -59,7 +59,7 @@ fn mas(grid: &common::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day4_1.txt").unwrap();
+    let input = fs::read_to_string("input/day4.txt").unwrap();
     let (xmas, mas) = calculate_metrics(&input);
     println!("result 1: {}", xmas);
     println!("result 2: {}", mas);

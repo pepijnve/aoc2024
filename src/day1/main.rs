@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("input/day1_1.txt").unwrap();
+    let input = fs::read_to_string("input/day1.txt").unwrap();
 
     let (left, right) = parse_input(input);
     let (distance, similarity) = calculate_metrics(&left, &right);
