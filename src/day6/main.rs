@@ -1,5 +1,5 @@
 use std::fs;
-use common::Grid;
+use aoc::grid;
 
 enum Direction {
     Up,
@@ -7,7 +7,7 @@ enum Direction {
     Down,
     Left,
 }
-fn distinct_steps(grid: &mut Grid) -> Option<i32> {
+fn distinct_steps(grid: &mut grid::Grid) -> Option<i32> {
     let mut distinct_steps = 1;
 
     let (mut x, mut y) = grid.find('^').unwrap();
@@ -51,12 +51,12 @@ fn distinct_steps(grid: &mut Grid) -> Option<i32> {
 }
 
 fn calculate_answer1(input: &str) -> i32 {
-    let mut grid = Grid::new_from_string(input);
+    let mut grid = grid::Grid::new_from_string(input);
     distinct_steps(&mut grid).unwrap()
 }
 
 fn calculate_answer2(input: &str) -> i32 {
-    let grid = Grid::new_from_string(input);
+    let grid = grid::Grid::new_from_string(input);
 
     let mut possible_loops_positions = 0;
 

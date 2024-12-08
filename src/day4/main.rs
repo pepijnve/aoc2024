@@ -1,7 +1,7 @@
-use common;
+use aoc::grid;
 use std::fs;
 
-fn xmas(grid: &common::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
+fn xmas(grid: &grid::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
     let Some(c1) = grid.get(x, y) else {
         return false;
     };
@@ -33,7 +33,7 @@ fn xmas(grid: &common::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
     true
 }
 
-fn mas(grid: &common::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
+fn mas(grid: &grid::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
     let Some(c1) = grid.get(x - dx, y - dy) else {
         return false;
     };
@@ -66,7 +66,7 @@ fn main() {
 }
 
 fn calculate_metrics(input: &str) -> (i32, i32) {
-    let grid = common::Grid::new_from_string(input);
+    let grid = grid::Grid::new_from_string(input);
 
     let mut mas_count = 0;
     let mut xmas_count = 0;
