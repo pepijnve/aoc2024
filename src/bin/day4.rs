@@ -1,5 +1,4 @@
-use aoc::grid;
-use std::fs;
+use aoc2024::grid;
 
 fn xmas(grid: &grid::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
     let Some(c1) = grid.get(x, y) else {
@@ -59,10 +58,10 @@ fn mas(grid: &grid::Grid, x: isize, y: isize, dx: isize, dy: isize) -> bool {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day4.txt").unwrap();
-    let (xmas, mas) = calculate_metrics(&input);
-    println!("result 1: {}", xmas);
-    println!("result 2: {}", mas);
+    let input = aoc2024::io::read_input();
+    let (a1, a2) = calculate_metrics(&input);
+    println!("result 1: {}", a1);
+    println!("result 2: {}", a2);
 }
 
 fn calculate_metrics(input: &str) -> (i32, i32) {
@@ -112,7 +111,7 @@ fn calculate_metrics(input: &str) -> (i32, i32) {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let result = calculate_metrics(
             "\
 MMMSXXMASM

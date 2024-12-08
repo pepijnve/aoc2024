@@ -1,5 +1,4 @@
-use std::fs;
-use aoc::grid;
+use aoc2024::grid;
 
 enum Direction {
     Up,
@@ -30,7 +29,7 @@ fn distinct_steps(grid: &mut grid::Grid) -> Option<i32> {
                     Direction::Down => Direction::Left,
                     Direction::Left => Direction::Up,
                 };
-                continue
+                continue;
             }
             Some('.') => {
                 grid.set(x + dx, y + dy, dir_char);
@@ -38,7 +37,7 @@ fn distinct_steps(grid: &mut grid::Grid) -> Option<i32> {
             }
             Some(c) => {
                 if c == dir_char {
-                    return None
+                    return None;
                 }
             }
             None => break,
@@ -78,7 +77,8 @@ fn calculate_answer2(input: &str) -> i32 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day6.txt").unwrap();
+    let input = aoc2024::io::read_input();
+
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }
@@ -87,7 +87,7 @@ fn main() {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let sample = "\
 ....#.....
 .........#

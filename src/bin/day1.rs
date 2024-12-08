@@ -1,7 +1,5 @@
-use std::fs;
-
 fn main() {
-    let input = fs::read_to_string("input/day1.txt").unwrap();
+    let input = aoc2024::io::read_input();
 
     let (left, right) = parse_input(input);
     let (distance, similarity) = calculate_metrics(&left, &right);
@@ -83,7 +81,7 @@ fn parse_input(input: String) -> (Vec<i32>, Vec<i32>) {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let input = "\
 3   4
 4   3

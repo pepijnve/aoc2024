@@ -1,5 +1,3 @@
-use std::fs;
-
 fn parse_input(input: &str) -> Vec<(u64, Vec<u64>)> {
     input
         .lines()
@@ -74,7 +72,7 @@ fn calculate_answer2(input: &str) -> u64 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day7.txt").unwrap();
+    let input = aoc2024::io::read_input();
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }
@@ -83,7 +81,7 @@ fn main() {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let sample = "\
 190: 10 19
 3267: 81 40 27

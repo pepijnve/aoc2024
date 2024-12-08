@@ -1,6 +1,5 @@
 use std::cmp::Ordering::{Equal, Less};
 use std::collections::HashMap;
-use std::fs;
 
 fn parse_input(input: &str) -> (HashMap<i32, Vec<i32>>, Vec<Vec<i32>>) {
     let mut lines = input.lines();
@@ -39,11 +38,7 @@ fn sort_by_rules(rules: &HashMap<i32, Vec<i32>>, update: &Vec<i32>) -> Vec<i32> 
         let Some(rule) = rules.get(&a) else {
             return Equal;
         };
-        return if rule.contains(&b) {
-            Less
-        } else {
-            Equal
-        }
+        return if rule.contains(&b) { Less } else { Equal };
     });
     fixed
 }
@@ -79,7 +74,8 @@ fn calculate_answer2(input: &str) -> i32 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day5.txt").unwrap();
+    let input = aoc2024::io::read_input();
+
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }
@@ -88,7 +84,7 @@ fn main() {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let sample = "\
 47|53
 97|13

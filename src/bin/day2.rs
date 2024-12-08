@@ -1,7 +1,5 @@
-use std::fs;
-
 fn main() {
-    let input = fs::read_to_string("input/day2.txt").unwrap();
+    let input = aoc2024::io::read_input();
 
     let reports = parse_input(input);
     let (safe, safe_with_dampening) = calculate_metrics(&reports);
@@ -13,7 +11,10 @@ fn main() {
 fn calculate_metrics(reports: &Vec<Vec<i32>>) -> (usize, usize) {
     (
         reports.iter().filter(|report| is_safe(report)).count(),
-        reports.iter().filter(|report| is_safe_with_dampening(report)).count()
+        reports
+            .iter()
+            .filter(|report| is_safe_with_dampening(report))
+            .count(),
     )
 }
 
@@ -54,7 +55,10 @@ fn parse_input(input: String) -> Vec<Vec<i32>> {
     let mut reports = Vec::new();
 
     lines.iter().for_each(|line| {
-        let report = line.split_whitespace().map(|v| v.parse::<i32>().unwrap()).collect::<Vec<i32>>();
+        let report = line
+            .split_whitespace()
+            .map(|v| v.parse::<i32>().unwrap())
+            .collect::<Vec<i32>>();
         reports.push(report);
     });
 
@@ -65,7 +69,7 @@ fn parse_input(input: String) -> Vec<Vec<i32>> {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let input = "\
 7 6 4 2 1
 1 2 7 8 9

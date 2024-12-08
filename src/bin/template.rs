@@ -1,15 +1,14 @@
-use std::fs;
-
-fn calculate_answer1(input: &str) -> i32 {
+fn calculate_answer1(_: &str) -> i32 {
     0
 }
 
-fn calculate_answer2(input: &str) -> i32 {
+fn calculate_answer2(_: &str) -> i32 {
     0
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day_1.txt").unwrap();
+    let input = aoc2024::io::read_input();
+
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }
@@ -18,7 +17,7 @@ fn main() {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let sample = "\
 ";
 

@@ -1,7 +1,6 @@
+use aoc2024::grid::Grid;
+use aoc2024::vector2d::Vector2d;
 use std::collections::{HashMap, HashSet};
-use std::fs;
-use aoc::grid::Grid;
-use aoc::vector2d::Vector2d;
 
 fn parse_antennas(grid: &Grid) -> HashMap<char, Vec<Vector2d<isize>>> {
     let mut frequencies = HashMap::new();
@@ -81,7 +80,7 @@ fn calculate_answer2(input: &str) -> i32 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input/day8.txt").unwrap();
+    let input = aoc2024::io::read_input();
     println!("result 1: {}", calculate_answer1(&input));
     println!("result 2: {}", calculate_answer2(&input));
 }
@@ -90,7 +89,7 @@ fn main() {
 mod tests {
     use super::*;
     #[test]
-    fn test_parse_input() {
+    fn example() {
         let sample = "\
 ............
 ........0...
