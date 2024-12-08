@@ -1,12 +1,19 @@
 pub struct Grid {
-    rows: Vec<Vec<char>>,
+    grid: Box<[char]>,
     width: isize,
     height: isize,
 }
 
 impl Clone for Grid {
     fn clone(&self) -> Grid {
-        Grid::new(self.rows.iter().map( |r| r.clone()).collect())
+        let grid = self.grid.clone();
+        let width = self.width;
+        let height = self.height;
+        Grid {
+            grid,
+            width,
+            height
+        }
     }
 }
 
@@ -22,8 +29,9 @@ impl Grid {
     pub fn new(rows: Vec<Vec<char>>) -> Grid {
         let width = rows[0].len() as isize;
         let height = rows.len() as isize;
+        let grid: Box<[char]> = rows.into_iter().flat_map(|r| r.into_iter()).collect();
         Grid {
-            rows,
+            grid,
             width,
             height,
         }
@@ -38,14 +46,15 @@ impl Grid {
     }
 
     pub fn get(&self, x: isize, y: isize) -> Option<char> {
-        if x < 0 || x >= self.width() {
+        let width = self.width();
+        if x < 0 || x >= width {
             return None;
         }
 
         if y < 0 || y >= self.height() {
             return None;
         }
-        Some(self.rows[y as usize][x as usize])
+        Some(self.grid[(y * width + x) as usize])
     }
 
     pub fn find(&self, c: char) -> Option<(isize, isize)> {
@@ -63,7 +72,8 @@ impl Grid {
     }
 
     pub fn set(&mut self, x: isize, y: isize, c: char) {
-        if x < 0 || x >= self.width() {
+        let width = self.width();
+        if x < 0 || x >= width {
             return;
         }
 
@@ -71,6 +81,6 @@ impl Grid {
             return;
         }
 
-        self.rows[y as usize][x as usize] = c
+        self.grid[(y * width + x) as usize] = c
     }
 }
