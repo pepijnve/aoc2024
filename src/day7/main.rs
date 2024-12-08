@@ -21,6 +21,10 @@ fn can_evaluate_to_recursive(
     accumulator: u64,
     operands: &[u64],
 ) -> bool {
+    if accumulator > test_value {
+        return false;
+    }
+
     if operands.len() == 0 {
         return accumulator == test_value;
     }
