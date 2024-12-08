@@ -65,13 +65,13 @@ fn calculate_answer2(input: &str) -> i32 {
                 let mut anti = p1;
                 while point_in_grid(&grid, &anti) {
                     anitnodes.insert(anti);
-                    anti = anti - diff;
+                    anti -= diff;
                 }
 
                 let mut anti = p2;
                 while point_in_grid(&grid, &anti) {
                     anitnodes.insert(anti);
-                    anti = anti + diff;
+                    anti += diff;
                 }
             }
         }

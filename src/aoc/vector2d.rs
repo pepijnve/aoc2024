@@ -1,7 +1,7 @@
 use num;
 use num::traits::ConstZero;
 use std::fmt::{Display, Formatter};
-use std::ops::{Add, Div, Mul, Sub};
+use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Sub, SubAssign};
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 pub struct Vector2d<T> {
@@ -34,6 +34,14 @@ where
     }
 }
 
+impl<T: Copy + AddAssign<S>, S: Copy> AddAssign<Vector2d<S>> for Vector2d<T>
+{
+    fn add_assign(&mut self, rhs: Vector2d<S>) {
+        self.x += rhs.x;
+        self.y += rhs.y;
+    }
+}
+
 impl<T: Copy + Sub> Sub for Vector2d<T>
 where
     <T as Sub>::Output: Copy,
@@ -42,6 +50,14 @@ where
 
     fn sub(self, rhs: Self) -> Self::Output {
         Vector2d::new(self.x - rhs.x, self.y - rhs.y)
+    }
+}
+
+impl<T: Copy + SubAssign<S>, S: Copy> SubAssign<Vector2d<S>> for Vector2d<T>
+{
+    fn sub_assign(&mut self, rhs: Vector2d<S>) {
+        self.x -= rhs.x;
+        self.y -= rhs.y;
     }
 }
 
@@ -56,6 +72,16 @@ where
     }
 }
 
+impl<T: Copy + MulAssign<S> + Mul<S>, S: Copy> MulAssign<S> for Vector2d<T>
+where
+    <T as Mul<S>>::Output: Copy,
+{
+    fn mul_assign(&mut self, rhs: S) {
+        self.x *= rhs;
+        self.y *= rhs;
+    }
+}
+
 impl<T: Copy + Div<S>, S: Copy> Div<S> for Vector2d<T>
 where
     <T as Div<S>>::Output: Copy,
@@ -64,6 +90,16 @@ where
 
     fn div(self, rhs: S) -> Self::Output {
         Vector2d::new(self.x / rhs, self.y / rhs)
+    }
+}
+
+impl<T: Copy + DivAssign<S> + Div<S>, S: Copy> DivAssign<S> for Vector2d<T>
+where
+    <T as Div<S>>::Output: Copy,
+{
+    fn div_assign(&mut self, rhs: S) {
+        self.x /= rhs;
+        self.y /= rhs;
     }
 }
 
